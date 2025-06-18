@@ -8,6 +8,8 @@ if [ -z "$count" ]; then
   count=20
 fi
 
+echo "--- 脚本将执行 $count 轮数据下载 ---"
+
 # 用空格分隔的 URL 字符串
 URLS="\
 https://p16-oec-ttp.tiktokcdn-us.com/tos-useast5-i-omjb5zjo8w-tx/b1c62d6406395542c4d5dc9601347199.JPG~tplv-omjb5zjo8w-origin-jpeg.jpeg \

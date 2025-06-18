@@ -16,8 +16,8 @@ while [ "$i" -le 20 ]; do
     echo "下载中: $url"
 
     # 下载文件，设置 30 秒超时，保存 header
-    curl -m 30 -s -o /tmp/tmp_output -D /tmp/tmp_header -L "$url" \
-      -w "平均速度: %{speed_download} bytes/s\n下载时间: %{time_total} 秒\n" > /tmp/curl_output.log
+    curl -m 30 -s -o ./tmp_output -D ./tmp_header -L "$url" \
+      -w "平均速度: %{speed_download} bytes/s\n下载时间: %{time_total} 秒\n" > ./curl_output.log
 
     code=$?
 
@@ -25,11 +25,11 @@ while [ "$i" -le 20 ]; do
 
     if [ "$code" = "0" ]; then
       # 提取状态码
-      status=$(grep -i "^HTTP/" /tmp/tmp_header | tail -1 | cut -d' ' -f2)
+      status=$(grep -i "^HTTP/" ./tmp_header | tail -1 | cut -d' ' -f2)
       echo "状态码: $status"
-      cat /tmp/curl_output.log
+      cat ./curl_output.log
 
-      st=$(grep -i "server-timing:" /tmp/tmp_header)
+      st=$(grep -i "server-timing:" ./tmp_header)
       if [ -n "$st" ]; then
         echo "Server-Timing: $st"
       else
